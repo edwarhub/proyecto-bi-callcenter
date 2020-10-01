@@ -542,7 +542,7 @@
     <hop>
       <from>IN_troncal</from>
       <to>TF_UPPER</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>TF_UPPER</from>
@@ -575,6 +575,138 @@
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>IN_AgentesPersona</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>BD_transaccional</connection>
+    <sql>SELECT upper(p.nombres)||' '||upper(p.apellidos) as nombre_agente,
+       p.numdocumento,
+       p.genero,
+       p.fecha_nacimiento
+FROM Persona p,Agente a
+WHERE p.idpersona=a.idpersona</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>nombre_agente</name>
+        <length>2147483647</length>
+        <precision>-1</precision>
+        <origin>IN_AgentesPersona</origin>
+        <comments>nombre_agente</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>numdocumento</name>
+        <length>15</length>
+        <precision>0</precision>
+        <origin>IN_AgentesPersona</origin>
+        <comments>numdocumento</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>genero</name>
+        <length>2147483647</length>
+        <precision>-1</precision>
+        <origin>IN_AgentesPersona</origin>
+        <comments>genero</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>fecha_nacimiento</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>IN_AgentesPersona</origin>
+        <comments>fecha_nacimiento</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>IN_CampanaClienteCoorp</name>
     <type>TableInput</type>
@@ -685,7 +817,7 @@ WHERE c.idcliente=cl.idcliente</sql>
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>/home/edwar/Downloads/bases-datos-avanzadas/proyecto-bi/dim_fecha2.xlsx</name>
+      <name>/home/edwar/Downloads/bases-datos-avanzadas/proyecto-bi-callcenter/dim_fecha2.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1093,37 +1225,37 @@ FROM troncal
       <value>
         <name>hora</name>
         <rename> hora </rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>dia</name>
         <rename>dia</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>dia_semana</name>
         <rename>dia_semana</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>mes</name>
         <rename>mes</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>mes_nombre</name>
         <rename>mes_nombre</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>anho</name>
         <rename>anho</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>fecha</name>
         <rename>fecha</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -1245,6 +1377,64 @@ FROM troncal
     <GUI>
       <xloc>592</xloc>
       <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>OUT_Insert / update_Dim_agente</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>BD_bodega</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_agente</table>
+      <key>
+        <name>numdocumento</name>
+        <field>numdocumento</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>nombre</name>
+        <rename>nombre_agente</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>genero</name>
+        <rename>genero</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>fecha_nacimiento</name>
+        <rename>fecha_nacimiento</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>numdocumento</name>
+        <rename>numdocumento</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1382,196 +1572,6 @@ FROM troncal
     <GUI>
       <xloc>352</xloc>
       <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>IN_AgentesPersona</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>BD_transaccional</connection>
-    <sql>SELECT upper(p.nombres)||' '||upper(p.apellidos) as nombre_agente,
-       p.numdocumento,
-       p.genero,
-       p.fecha_nacimiento
-FROM Persona p,Agente a
-WHERE p.idpersona=a.idpersona</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>nombre_agente</name>
-        <length>2147483647</length>
-        <precision>-1</precision>
-        <origin>IN_AgentesPersona</origin>
-        <comments>nombre_agente</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numdocumento</name>
-        <length>15</length>
-        <precision>0</precision>
-        <origin>IN_AgentesPersona</origin>
-        <comments>numdocumento</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>genero</name>
-        <length>2147483647</length>
-        <precision>-1</precision>
-        <origin>IN_AgentesPersona</origin>
-        <comments>genero</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Date</type>
-        <storagetype>normal</storagetype>
-        <name>fecha_nacimiento</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>IN_AgentesPersona</origin>
-        <comments>fecha_nacimiento</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>OUT_Insert / update_Dim_agente</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>BD_bodega</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_agente</table>
-      <key>
-        <name>numdocumento</name>
-        <field>numdocumento</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>nombre</name>
-        <rename>nombre_agente</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>genero</name>
-        <rename>genero</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>fecha_nacimiento</name>
-        <rename>fecha_nacimiento</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>numdocumento</name>
-        <rename>numdocumento</rename>
-        <update>N</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
