@@ -1,0 +1,9 @@
+CREATE PROJECT
+
+cubejs create callcenter_bi -d postgres
+
+RUN
+
+cd callcenter_bi
+npm run dev
+
